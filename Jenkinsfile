@@ -9,24 +9,25 @@ pipeline {
             }
         }
         
+     
         stage('Build') {
             steps {
                 echo 'Building...'
-                sh 'mvn clean install'
+                bat 'mvn clean install' // bat komutu Windows'ta batch scriptleri için kullanılır
             }
         }
         
         stage('Test') {
             steps {
                 echo 'Testing...'
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
         
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
-                sh 'docker run -d --name myapp myimage:latest'
+                bat 'docker run -d --name myapp myimage:latest' // Docker komutu için bat komutu kullanabilirsiniz
             }
         }
     }
