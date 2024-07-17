@@ -5,7 +5,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 echo 'Cloning repository...'
-                git 'https://github.com/imranbeyza/beyza12.git'
+                git branch: 'main', url: 'https://github.com/imranbeyza/beyza12.git'
             }
         }
         
