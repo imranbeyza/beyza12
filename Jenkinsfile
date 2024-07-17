@@ -1,27 +1,27 @@
 pipeline {
     agent any
     stages {
-        stage('Clone Repository') {
+        stage('Checkout SCM') {
             steps {
-                git 'https://github.com/imranbeyza/beyza12.git'
+                checkout scm
             }
         }
         stage('Build') {
             steps {
-                echo 'Building...'
-                // Buraya build adımlarınızı ekleyin
+                // Build komutlarını buraya ekleyin
+                sh 'mvn clean install'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing...'
-                // Buraya test adımlarınızı ekleyin
+                // Test komutlarını buraya ekleyin
+                sh 'mvn test'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying...'
-                // Buraya deploy adımlarınızı ekleyin
+                // Deploy komutlarını buraya ekleyin
+                sh 'mvn deploy'
             }
         }
     }
