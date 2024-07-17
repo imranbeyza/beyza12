@@ -8,20 +8,20 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo 'Building...'
-                // Buraya build adımlarınızı ekleyin
+               steps {
+        echo 'Building...'
+        sh 'mvn clean install'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing...'
-                // Buraya test adımlarınızı ekleyin
-            }
+        echo 'Testing...'
+        sh 'mvn test'
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
-                // Buraya deploy adımlarınızı ekleyin
+                sh 'docker run -d --name myapp myimage:latest'
             }
         }
     }
