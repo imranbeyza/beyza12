@@ -1,20 +1,28 @@
 pipeline {
-  agent any
-  stages {
-    stage('Build') {
-      steps {
-        // Build adımları burada tanımlanır
-      }
+    agent any
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/imranbeyza/beyza12.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                // Buraya build adımlarınızı ekleyin
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+                // Buraya test adımlarınızı ekleyin
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+                // Buraya deploy adımlarınızı ekleyin
+            }
+        }
     }
-    stage('Test') {
-      steps {
-        // Test adımları burada tanımlanır
-      }
-    }
-    stage('Deploy') {
-      steps {
-        // Deploy (Dağıtım) adımları burada tanımlanır
-      }
-    }
-  }
 }
