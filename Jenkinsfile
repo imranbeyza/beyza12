@@ -1,28 +1,54 @@
 pipeline {
     agent any
+    
     stages {
-        stage('Checkout SCM') {
+        stage('Checkout') {
             steps {
                 checkout scm
             }
         }
+        
         stage('Build') {
             steps {
-                // Build komutlarını buraya ekleyin
-                sh 'mvn clean install'
+                // Projeyi derlemek için gerekli komutları buraya ekleyin
+                // Örneğin:
+                // sh 'mvn clean package'
+                // veya
+                // bat 'gradle build'
             }
         }
+        
         stage('Test') {
             steps {
-                // Test komutlarını buraya ekleyin
-                sh 'mvn test'
+                // Testleri çalıştırmak için gerekli komutları buraya ekleyin
+                // Örneğin:
+                // sh 'mvn test'
+                // veya
+                // bat 'gradle test'
             }
         }
+        
         stage('Deploy') {
             steps {
-                // Deploy komutlarını buraya ekleyin
-                sh 'mvn deploy'
+                // Uygulamayı hedef ortama dağıtmak için gerekli komutları buraya ekleyin
+                // Örneğin:
+                // sh 'kubectl apply -f deployment.yaml'
+                // veya
+                // bat 'deploy.cmd'
             }
+        }
+    }
+    
+    post {
+        success {
+            // Başarı durumunda yapılacak işlemleri buraya ekleyin
+            // Örneğin:
+            // echo 'Başarıyla tamamlandı!'
+        }
+        failure {
+            // Başarısızlık durumunda yapılacak işlemleri buraya ekleyin
+            // Örneğin:
+            // echo 'Hata oluştu!'
         }
     }
 }
