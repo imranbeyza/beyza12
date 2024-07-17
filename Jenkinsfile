@@ -1,25 +1,31 @@
 pipeline {
     agent any
+    
     stages {
         stage('Clone Repository') {
             steps {
+                echo 'Cloning repository...'
                 git 'https://github.com/imranbeyza/beyza12.git'
             }
         }
+        
         stage('Build') {
             steps {
-               steps
-        sh 'mvn clean install'
+                echo 'Building...'
+                sh 'mvn clean install'
             }
         }
+        
         stage('Test') {
             steps {
-      
-        sh 'mvn test'
+                echo 'Testing...'
+                sh 'mvn test'
+            }
         }
+        
         stage('Deploy') {
             steps {
-               
+                echo 'Deploying...'
                 sh 'docker run -d --name myapp myimage:latest'
             }
         }
