@@ -10,7 +10,7 @@ pipeline {
         }
         
      
-         stage('Build') {
+        stage('Build') {
             steps {
                 echo 'Building with Gradle...'
                 bat 'gradle clean build'
@@ -19,15 +19,15 @@ pipeline {
         
         stage('Test') {
             steps {
-                echo 'Testing...'
-                bat 'mvn test'
+                echo 'Running tests...'
+                bat 'gradle test'
             }
         }
         
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
-                bat 'docker run -d --name myapp myimage:latest' // Docker komutu için bat komutu kullanabilirsiniz
+                sh 'docker run -d --name myapp myimage:latest'
             }
         }
     }
