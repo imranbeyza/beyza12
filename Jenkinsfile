@@ -10,10 +10,10 @@ pipeline {
         }
         
      
-        stage('Build') {
+         stage('Build') {
             steps {
-                echo 'Building...'
-                bat 'mvn clean install' // bat komutu Windows'ta batch scriptleri için kullanılır
+                echo 'Building with Gradle...'
+                bat 'gradle clean build'
             }
         }
         
