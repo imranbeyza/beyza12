@@ -10,10 +10,10 @@ pipeline {
         }
         
      
-        stage('Build') {
+       stage('Build') {
             steps {
-                echo 'Building with Gradle...'
-                bat 'gradle clean build'
+                echo 'Building...'
+                bat 'mvn clean install'
             }
         }
         
